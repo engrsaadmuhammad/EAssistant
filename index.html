@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>EAssistant | App Information</title>
+
+  <meta name="description"
+    content="EAssistant is a private Chrome extension for personal Etsy keyword research, listing analysis, and public shop information.">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #f8fafc;
+      color: #182236;
+      font-family: Arial, sans-serif;
+      line-height: 1.7;
+    }
+
+    header {
+      background: #111827;
+      color: white;
+      padding: 50px 24px;
+      text-align: center;
+    }
+
+    .logo {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 62px;
+      height: 62px;
+      background: #2563eb;
+      color: white;
+      border-radius: 15px;
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 36px;
+    }
+
+    header p {
+      color: #cbd5e1;
+      margin-bottom: 0;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 35px auto;
+      padding: 0 24px;
+    }
+
+    section {
+      background: white;
+      padding: 28px;
+      margin-bottom: 20px;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+    }
+
+    h2 {
+      font-size: 22px;
+      margin-top: 0;
+      color: #152238;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    .notice {
+      background: #f1f5f9;
+      padding: 16px;
+      border-radius: 8px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #64748b;
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 35px 18px;
+      }
+
+      header h1 {
+        font-size: 28px;
+      }
+
+      main {
+        padding: 0 15px;
+      }
+
+      section {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">E</div>
+  <h1>EAssistant</h1>
+  <p>Private Etsy Research & Listing Analysis Chrome Extension</p>
+</header>
+
+<main>
+
+  <section>
+    <h2>About the Application</h2>
+
+    <p>
+      EAssistant is a privately developed Chrome browser
+      extension designed for personal Etsy product research,
+      keyword analysis, listing comparisons, and public
+      shop information research.
+    </p>
+
+    <p>
+      The application is intended exclusively for use by
+      its owner in their personal browser. It is not offered
+      as a public service, commercial platform, or paid
+      subscription.
+    </p>
+
+    <p>
+      EAssistant is a read-only research tool and does not
+      modify Etsy listings, manage accounts, process orders,
+      or perform purchasing activities.
+    </p>
+  </section>
+
+  <section>
+    <h2>Application Features</h2>
+
+    <ul>
+      <li>
+        <strong>Keyword Research:</strong>
+        Identifies Etsy search results containing an exact
+        keyword or phrase in their listing titles using
+        case-insensitive matching.
+      </li>
+
+      <li>
+        <strong>Listing Title Analysis:</strong>
+        Allows manual copying of matching listing titles
+        for personal keyword research and comparison.
+      </li>
+
+      <li>
+        <strong>Description Research:</strong>
+        Attempts to retrieve publicly accessible listing
+        descriptions and organize them into readable text.
+      </li>
+
+      <li>
+        <strong>Featured Image Research:</strong>
+        Combines featured images from matching listings
+        into a PNG collage for private visual comparison,
+        subject to image availability and browser permissions.
+      </li>
+
+      <li>
+        <strong>Listing Tags:</strong>
+        Uses Etsy Open API v3 to request listing tags when
+        valid, approved developer credentials and required
+        API permissions are available.
+      </li>
+
+      <li>
+        <strong>Public Shop Information:</strong>
+        Displays available shop statistics such as shop age,
+        total sales, active listings, listing favorites,
+        and listing views.
+      </li>
+
+      <li>
+        <strong>Shop Owner Information:</strong>
+        May display the shop owner's name when it is publicly
+        available on the corresponding Etsy shop page.
+      </li>
+
+      <li>
+        <strong>Research Toolbar:</strong>
+        Provides keyword matching, a results counter,
+        manual rescanning, clipboard functions, and optional
+        shop information directly on Etsy search pages.
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>How the Application Works</h2>
+
+    <p>
+      EAssistant operates as a Chrome Manifest V3 extension
+      on Etsy search results pages manually opened by
+      its owner.
+    </p>
+
+    <p>
+      The extension examines listing titles and images
+      currently loaded on the page and identifies listings
+      matching the selected keyword or phrase.
+    </p>
+
+    <p>
+      When the owner chooses to research descriptions,
+      the extension may request individual public Etsy
+      listing pages.
+    </p>
+
+    <p>
+      For listing tags and shop statistics, EAssistant
+      communicates with Etsy's official Open API v3
+      through its background service worker.
+    </p>
+
+    <p>
+      API requests are queued and rate-limited to reduce
+      excessive simultaneous requests.
+    </p>
+
+    <p>
+      The application does not automatically navigate
+      through multiple search result pages or operate
+      as an unattended marketplace crawler.
+    </p>
+  </section>
+
+  <section>
+    <h2>Etsy API Integration</h2>
+
+    <p>
+      EAssistant is designed to use Etsy Open API v3
+      for approved, read-only research operations.
+    </p>
+
+    <p>
+      Subject to API authorization and availability,
+      the extension may request:
+    </p>
+
+    <ul>
+      <li>Listing tags</li>
+      <li>Listing favorites and views</li>
+      <li>Shop creation date</li>
+      <li>Total shop sales count</li>
+      <li>Number of active shop listings</li>
+      <li>Public shop URL</li>
+    </ul>
+
+    <p>
+      All statistics are based on information returned
+      by Etsy's API. The application does not create
+      estimated weekly sales, artificial market trends,
+      or fabricated performance figures.
+    </p>
+
+    <p>
+      API-dependent features remain unavailable without
+      valid credentials, necessary permissions, and
+      Etsy's approval.
+    </p>
+  </section>
+
+  <section>
+    <h2>API Credentials and Security</h2>
+
+    <p>
+      EAssistant is designed to use developer credentials
+      belonging exclusively to its owner.
+    </p>
+
+    <p>
+      The owner manually enters their API keystring and
+      shared secret through the extension's Options page.
+    </p>
+
+    <p>
+      These credentials are stored using Chrome extension
+      storage and are supplied to Etsy's official API
+      endpoint for authorized API requests.
+    </p>
+
+    <p>
+      API credentials are not embedded in the extension's
+      source code or published on this information website.
+    </p>
+
+    <p>
+      EAssistant does not request or collect API credentials
+      from other Etsy sellers.
+    </p>
+  </section>
+
+  <section>
+    <h2>Privacy and Data Protection</h2>
+
+    <p>
+      EAssistant runs locally inside its owner's
+      Chrome browser.
+    </p>
+
+    <p>
+      The extension does not operate an external analytics
+      server, maintain a public user database, or sell
+      research information.
+    </p>
+
+    <p>
+      The application accesses supported Etsy pages and
+      Etsy's official API only for its research features.
+    </p>
+
+    <p>
+      It is not designed to access private customer records,
+      buyer messages, payment information, or order details.
+    </p>
+
+    <p>
+      Research results are intended for personal analysis
+      and are not automatically uploaded to external
+      research services.
+    </p>
+  </section>
+
+  <section>
+    <h2>What EAssistant Does Not Do</h2>
+
+    <ul>
+      <li>Create, upload, modify, or delete Etsy listings.</li>
+      <li>Change Etsy shop settings or account information.</li>
+      <li>Access private customer orders or payment records.</li>
+      <li>Send messages or emails to buyers or sellers.</li>
+      <li>Make purchases or modify shopping carts.</li>
+      <li>Perform automated account logins.</li>
+      <li>Automatically crawl multiple search result pages.</li>
+      <li>Generate fabricated keyword search volumes.</li>
+      <li>Produce unsupported weekly sales estimates.</li>
+      <li>Collect API credentials from other Etsy users.</li>
+      <li>Distribute or sell collected marketplace data.</li>
+      <li>Operate as a public or commercial research service.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Application Permissions</h2>
+
+    <p>
+      EAssistant uses limited Chrome extension permissions
+      necessary for its intended research functionality.
+    </p>
+
+    <ul>
+      <li>
+        <strong>Storage:</strong>
+        Stores extension preferences and API credentials.
+      </li>
+
+      <li>
+        <strong>Clipboard Write:</strong>
+        Copies matching listing research data.
+      </li>
+
+      <li>
+        <strong>Etsy Website Access:</strong>
+        Reads currently loaded search results and requests
+        individual public listing or shop pages.
+      </li>
+
+      <li>
+        <strong>Etsy Open API Access:</strong>
+        Retrieves authorized listing and shop information.
+      </li>
+    </ul>
+
+    <p>
+      The extension does not require access to unrelated
+      websites, advertising networks, or analytics servers.
+    </p>
+  </section>
+
+  <section>
+    <h2>Application Availability</h2>
+
+    <p>
+      EAssistant is a private personal research project
+      developed for use by its owner.
+    </p>
+
+    <p>
+      It is not currently distributed through the Chrome
+      Web Store, offered for public registration, or
+      operated as a commercial subscription service.
+    </p>
+
+    <p>
+      API-dependent functionality is conditional on
+      Etsy's authorization and compliance with applicable
+      developer requirements.
+    </p>
+  </section>
+
+  <section>
+    <h2>Responsible Research</h2>
+
+    <p>
+      EAssistant is intended to support responsible
+      personal marketplace research and independent
+      digital product development.
+    </p>
+
+    <p>
+      The application does not attempt to bypass
+      authentication requirements or retrieve restricted
+      Etsy information.
+    </p>
+
+    <p>
+      Its owner is responsible for complying with
+      applicable Etsy platform rules, API terms,
+      and intellectual property requirements.
+    </p>
+  </section>
+
+  <section>
+    <h2>Independent Application Disclaimer</h2>
+
+    <div class="notice">
+      The term "Etsy" is a trademark of Etsy, Inc.
+      <br><br>
+      This application uses the Etsy API but is not
+      endorsed or certified by Etsy, Inc.
+      <br><br>
+      EAssistant is an independent personal research
+      project and is not affiliated with, sponsored by,
+      or officially supported by Etsy, Inc.
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  EAssistant | Private Etsy Research Chrome Extension
+  <br>
+  Independent Personal Research Project
+</footer>
+
+</body>
+</html>
